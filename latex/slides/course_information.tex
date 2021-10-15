@@ -1,0 +1,20 @@
+\usepackage[german]{babel}
+
+\usepackage[utf8]{inputenc}
+
+
+
+\lstset{
+  language = Java,
+  showspaces = false,
+  showtabs = false,
+  showstringspaces = false,
+  escapechar = @,
+  belowskip=-1.5em
+}
+
+\def\ContinueLineNumber{\lstset{firstnumber=last}}
+\def\StartLineAt#1{\lstset{firstnumber=#1}}
+\let\numberLineAt\StartLineAt
+
+\makeatletter
