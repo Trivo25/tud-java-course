@@ -29,10 +29,10 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link current" href="/index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/getting_started.html">Getting Started</a>
+            <a class="nav-link current" href="/getting_started.html">Getting Started</a>
           </li>
           <li class="nav-item">
             <a class="nav-link open-website" target="_blank" href="https://github.com/Trivo25/tud-Java-course">GitHub</a>
@@ -48,53 +48,72 @@
       <div class="row">
 
         <div class="col-sm">
-          <h1 class="mt-5">Java-Programming course</h1>
-          <p class="lead">WS 2021/22</p>
-          <span class="lead contact">Moritz Schulz, Florian Kluge</span>
-          <br><a href="mailto:tud-go-course@technotro.com" class="mail-to">Questions or feedback? Don't hesitate and write us!</a>
-
+          <h3 class="mt-5">Getting started</h3>
+          <p class="lead">A small guide to get you right on track for the course!</p>
+          <a href="mailto:tud-go-course@technotro.com" class="mail-to">Questions? Write us!</a>
         </div>
+      
+      </div>
+      <hr class="mt-2 mb-3"/>
+      <div class="row">
 
         <div class="col-sm">
-          <img src="./assets/img/java.png" alt="Gopher" style="width: 40%; float: right; margin-bottom: 15px; margin-top: 15px;">
+          <span class=>Java OpenSDK 11<span class="text-muted"> (recommended)</span></span> <a style="font-size: 1rem;" class="open-website" target="_blank" href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">available here</a>
+          <br>
+          <span class=>Installation guides for Windows, Linux and Mac</span> <a style="font-size: 1rem;" class="open-website" target="_blank" href="https://adoptium.net/installation.html?variant=openjdk11&jvmVariant=hotspot">available here</a>
         </div>
-        
-      </div>
-
-      <div class="alert alert-success" role="alert">
-        <h5 class="display-6">We welcome everybody to the Java programming introductory course!</h5>
-        <span class="badge bg-light">Where?</span> <a href="https://navigator.tu-dresden.de/raum/542100.2110" target="_blank" class="open-website text-muted">APB/E006</a>
-        <br><span class="badge bg-light">When?</span> <span>Thursday, 4. DS - 13:00 to 14:30 pm</span>
-        
+      
       </div>
       <hr class="mt-2 mb-3"/>
     </div>
-
+    
     <div class="container">
-      <h5 class="text-muted">Overview</h5>
-      <ul class="list-group">
+      <h5 class="text-muted">Making this Java thing work..</h5>
+      <p class="text-muted">This guide will help you to get your development enviroment ready to go so we can start doing cool things right away!</p>
+      <div class="container">
+        <p>
+          In order to actually execute the code you wrote you need a compiler that basically translates your plain Java code into something your computer understands and can execute.
+          The <code>javac</code> programm does exactly that - it compiles a plain <code>.java</code> file into something the so-called Java Virtual Machine understands.
+
+          <br>
+          <br>
+          To get everything working we need to install a Java development enviroment.
+          <br>We recommend <code>Java OpenJDK 11 by Adoptium</code>
+          <a style="font-size: 1rem;" class="open-website" target="_blank" href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">Download</a> <i class="text-muted">(please select "Temurin 11 (LTS)" and the correct OS and architecture when downloading)</i>.
+          <br>The installation depends on your operating system. Even tho we recommend <code>Java 11</code> you are free to use any other version - but please keep in mind that things might be different!
+
+          <br><br>For both Windows and Mac binaries and installers are available.
+          Choose the one you are most familiar with - if you are new to this Java-thingie we recommend using the installer (.msi for Windows and .pkg for Mac) and just follow the instructions.
+
+
+          <br>The installation guides for Windows, Mac and Linux are available <a style="font-size: 1rem;" class="open-website" target="_blank" href="https://adoptium.net/installation.html?variant=openjdk11&jvmVariant=hotspot">right here.</a>
+        </p>
+        <hr class="mt-2 mb-3"/>
+        
+      </div>
+
+      <!-- <ul class="list-group">
         <li class="list-group-item">
           <div class="row">
             <div class="col-sm">
-              <span class="course-topic">01 Introduction - Welcome to Java!</span> <span class="badge badge-info">New</span>
+              <span class="course-topic">01 Einführung - Willkommen bei Java!</span> <span class="badge badge-info">Neu</span>
             </div>
             <div class="col-sm">
-              <!-- <a class="open-website course-files" target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Materialien</a> -->
-              <span class="text-muted">available soon</span>
+              <span class="text-muted">bald verfügbar</span>
             </div>
             <div class="col-sm">
-              <span class="badge bg-light course-date">Thu, 21.10.2021</span>
+              <span class="badge bg-light course-date">Do, 21.10.2021</span>
             </div>
           </div>
         </li>
         <li class="list-group-item">
           <div class="row">
             <div class="col-sm">
-              <span class="course-topic text-muted" style="font-size: 80%">... we are currently working on the upcoming lessons!</span>
+              <span class="course-topic text-muted" style="font-size: 80%">... die nächsten Materialien sind in Arbeit!</span>
             </div>
           </div>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </main>
 

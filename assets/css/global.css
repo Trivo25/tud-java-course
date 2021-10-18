@@ -67,3 +67,7 @@ code {
   content: "\2709";
   color: black;
 }
+
+.current {
+  border-bottom: 2px solid red;
+}
