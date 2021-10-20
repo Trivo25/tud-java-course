@@ -16,6 +16,8 @@
 # *.eps
 # *.pdf
 
+notes.md
+
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf
