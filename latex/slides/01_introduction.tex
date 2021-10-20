@@ -31,6 +31,7 @@
 
 % ################# ORGANISATION #################
 
+
 \section{Organisation}
 
 \subsection{Who are we?}
@@ -41,7 +42,6 @@
 		Florian Kluge\\
 		Florian.Kluge@mailbox.tu-dresden.de
 
-		% Enumerations
 
 
 		\column{0.50\textwidth}
@@ -65,10 +65,21 @@
 
 \subsection{Structure}
 \begin{frame}{Structure}
-	\begin{itemize}
-		\item 14 lessons
-		\item Thursday, 13:00 - 14:30a
+	\begin{itemize}[<+->]
+		\item ~14 lessons
+		\item Thursday, 13:00 - 14:30
 		\item APB/006 (right here)
+		\item 3G-Rule
+		\item Attendance list
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Structure}
+	\begin{itemize}[<+->]
+		\item This course is *voluntarily*
+		\item Bored and want to leave? No problem!
+		\item[]	.. but please contact us so we can invite students from the waiting list
+		\item If you don't attend the course for two weeks in a row without notice we will give your slot to other students
 	\end{itemize}
 \end{frame}
 
@@ -95,48 +106,185 @@
 \end{frame}
 
 
+\subsection{Experience}
+\begin{frame}{Do you have any programming experience already?}
+	\begin{center}
+		Do you have any programming experience already?\\
+		\url{https://trivo25.github.io/tud-java-course/poll.html}\\
+		or\\
+		\url{https://strawpoll.com/6uh45fcvx}
+	\end{center}
+\end{frame}
+
+
 % ################# Time to get started! ..almost #################
 
 \section{Time to get started! ..almost}
 
-\begin{frame}{Time to get started! ..almost}
-	Make sure to have a working internet connection\\
-	\url{https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn}
+\begin{frame}[fragile]{Time to get started! ..almost}
+	\begin{center}
+		Java OpenJDK 11 \url{https://adoptium.net/}
+		\\
+		Did you install it correctly? Time to find out!
+	\end{center}
+
+	\begin{lstlisting}[language=bash]
+		$ javac --version
+		> javac 11.0.12
+	\end{lstlisting}
 \end{frame}
 
 
 
-% ################# Los geht's! #################
+\begin{frame}[fragile]{Time to get started! ..almost}
+	\begin{center}
+		Doesn't work? :(
+		Use an online compiler!
+
+		\url{https://www.jdoodle.com/online-java-compiler/}
+	\end{center}
+\end{frame}
+
+
+
+% ################# lets go #################
 
 \section{Let's go!}
 
+\subsection{Your first task}
+\begin{frame}[fragile]{Your first task}
+	\begin{itemize}[<+->]
+		\item Create a new folder
+		\item Open the terminal and navigate into that folder using \lstinline[columns=fixed]{$ cd /to/my/folder}
+		\item Create a new file by either typing\\ \lstinline[columns=fixed]{$ touch helloWorld.java}\\
+		      or right-clicking in your folder \lstinline[columns=fixed]{Right click -> new -> text document}\\
+		      and save it as a \lstinline[columns=fixed]{.java} file
+	\end{itemize}
+\end{frame}
 
-\subsection{Playground im Browser}
-\begin{frame}{Spaß im Browser}
-	Sample
+\subsection{Your first task}
+\begin{frame}[fragile]{Your first task}
+	\begin{itemize}[<+->]
+		\item now its time to write your first piece of code!
+		\item[] \lstinputlisting[language=java]{../code_samples/HelloWorld.java}
+	\end{itemize}
+\end{frame}
+
+\subsection{How to execute a java program}
+\begin{frame}[fragile]{How to execute a java program}
+	what we have to do now..
+	\begin{itemize}[<+->]
+		\item telling \lstinline[columns=fixed]{javac} to compile our \lstinline[columns=fixed]{helloWorld.java} file into a \lstinline[columns=fixed]{helloWorld.class}
+		\item \lstinline[columns=fixed]{.class} files are 'bytecode' for the Java Virtual Machine (JVM)
+		\item with \lstinline[columns=fixed]{$ java helloWorld} we can finally execute our first program!
+	\end{itemize}
+\end{frame}
+
+\subsection{How to execute a java program}
+\begin{frame}[fragile]{How to execute a java program}
+	\begin{lstlisting}[language=bash]
+		$ java helloWorld
+		> Hello World!
+	\end{lstlisting}
 \end{frame}
 
 
-\subsection{Was ist da jetzt eigentlich passiert?}
-\begin{frame}{Was ist da jetzt eigentlich passiert?}
-	Sample
+\subsection{Time to play around}
+\begin{frame}[fragile]{Time to play around}
+	your next task
+	\begin{itemize}[<+->]
+		\item change the text you want to print in the \lstinline[columns=fixed]{helloWorld.java} file
+		\item re-compile it into a \lstinline[columns=fixed]{.class} file and execute it again!
+	\end{itemize}
 \end{frame}
 
 
-\subsection{Eure erste Aufgabe}
-\begin{frame}{Eure erste Aufgabe}
-	Sample
+\subsection{What are we actually doing?}
+\begin{frame}[fragile]{What are we actually doing?}
+	\begin{itemize}[<+->]
+		\item we are telling the computer what do to
+		\item we list instructions for the computer
+	\end{itemize}
 \end{frame}
 
 
-% ################# Abschluss #################
+\subsection{Task numero 2!}
+\begin{frame}[fragile]{Task numero 2!}
+	\begin{center}
+		Let's add a variable of type \lstinline[language=Java]{String}!
+	\end{center}
+\end{frame}
 
-\section{Das war's auch schon (für Heut)}
+\subsection{Task numero 2!}
+\begin{frame}[fragile]{Task numero 2!}
+	\begin{center}
+		\lstinputlisting[language=java]{../code_samples/VariableString.java}
+	\end{center}
+\end{frame}
 
+
+\subsection{Task numero 2!}
+\begin{frame}[fragile]{Task numero 2!}
+	\begin{itemize}[<+->]
+		\item We can re-use variables
+		\item We can store data in them
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Task numero 3!}
+\begin{frame}[fragile]{Task numero 3!}
+	\begin{center}
+		\lstinputlisting[language=java]{../code_samples/VariableStringName.java}
+	\end{center}
+\end{frame}
+
+
+\subsection{Task numero 4!}
+\begin{frame}[fragile]{Task numero 3!}
+	\begin{itemize}[<+->]
+		\item Besides \lstinline[language=Java]{String}s we also have variables of type \lstinline[language=Java]{int}\\
+		\item \lstinline[language=Java]{int} represent whole numbers, like \lstinline[language=Java]{1, 18, 1337 or 420360}\\
+		\item We can calculate \lstinline[language=Java]{int} with operators like \lstinline[language=Java]{+}, \lstinline[language=Java]{-}, \lstinline[language=Java]{*} and many more
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Task numero 4!}
+\begin{frame}[fragile]{Task numero 3!}
+	We now can..
+	\begin{itemize}[<+->]
+		\item Display text in the console \lstinline[language=Java]{System.out.println("Hello word!");}
+		\item Declare variables like \lstinline[language=Java]{int} or \lstinline[language=Java]{String}
+		\item Read input from the conole
+		\item .. and know operators like \lstinline[language=Java]{+, - or *}
+		\item[] Okay, what now?
+		\item[] Let's build a calculator!
+	\end{itemize}
+\end{frame}
+% ################# ending first lesson #################
+
+\section{That's it (at least for today)}
 
 \subsection{}
-\begin{frame}{Informationen und Links zum Kurs}
-	Sample
+\begin{frame}{What will we do next lesson?}
+	\begin{itemize}
+		\item Deep dive into (more) variables and their operators
+		\item Introducing functions and control flow
+		\item and build more cool things!
+	\end{itemize}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Links and resources}
+	\begin{center}
+		\url{https://trivo25.github.io/tud-java-course/}
+	\end{center}
+
+	\begin{figure}[htbp]
+		\centerline{\includegraphics{assets/qr.png}}
+		\label{fig}
+	\end{figure}
 \end{frame}
 
 % nothing to do from here on
