@@ -6,7 +6,7 @@
   We want to keep it simple so even complete beginners can write such program only with the gained knowledge in the first lesson.
 */
 
-import Java.java.util.Scanner;
+import java.util.Scanner;
 
 public class Calculator {
 
@@ -14,23 +14,21 @@ public class Calculator {
     // variable definitions
     int a, b;
     Scanner inputScanner = new Scanner(System.in);
+
     
-    System.out.println("Number a:");
+    System.out.print("Number a: ");
     a = inputScanner.nextInt();
 
-    System.out.println("Number b:");
+    System.out.print("Number b: ");
     b = inputScanner.nextInt();
 
     // displaying the results of a few basic integer operations
 
-    System.out.println("Sum of a + b = ");
-    System.out.print(a + b);
+    System.out.println("Sum of a + b = " + (a + b));
 
-    System.out.println("Difference of a - b = ");
-    System.out.print(a - b);
+    System.out.println("Difference of a - b = " + (a - b));
 
-    System.out.println("Product of a * b = ");
-    System.out.print(a * b);
+    System.out.println("Product of a * b = " + (a * b));
 
   }
 
