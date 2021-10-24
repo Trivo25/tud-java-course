@@ -1,3 +1,5 @@
-# Go-lessons
+# Java-course
 
-Go language lessons @ TUD, 2021
+Java course held at TUD, 2021
+
+visit https://trivo25.github.io/tud-java-course/
