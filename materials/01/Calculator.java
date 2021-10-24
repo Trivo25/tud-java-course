@@ -4,6 +4,16 @@
 
   This example only uses a few basic lines of codes. No control flow, functions or such things.
   We want to keep it simple so even complete beginners can write such program only with the gained knowledge in the first lesson.
+
+
+
+  Example output for a = 3 and b = 5:
+      Number a: 3
+      Number b: 5
+      Sum of a + b = 8
+      Difference of a - b = -2
+      Product of a * b = 15
+
 */
 
 import java.util.Scanner;
