@@ -35,6 +35,9 @@ class Bankkonto {
 
     this.maxUeberzug = 100; // maximal 100Euro Ueberzug moeglich
     this.guthaben = 200; // Startguthaben von 200Euro
+
+    System.out.printf("Es wurde soeben ein neues Bankkonto auf den Namen %s mit der IBAN %s erstellt. Das Startguthaben betraegt %s.\n",
+        this.kontoInhaber, this.iban, this.guthaben);
   }
 
 
@@ -47,7 +50,7 @@ class Bankkonto {
     this.guthaben -= amount;
     this.anzahlTransaktionen++;
     System.out.printf("Sie haben gerade %s Euro an %s ueberwiesen. Verbleibendes Guthaben: %s Euro. Sie haben bereits %s Transaktionen getaetigt.\n",
-      amount, to, this.guthaben, this.anzahlTransaktionen);
+        amount, to, this.guthaben, this.anzahlTransaktionen);
     return true;
   }
 
