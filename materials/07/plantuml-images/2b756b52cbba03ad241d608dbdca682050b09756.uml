@@ -1,0 +1,18 @@
+@startuml
+!theme plain
+scale 2.0
+skinparam classAttributeIconSize 0
+hide circle
+
+Fahrzeug <|-- Bus
+
+class Fahrzeug {
+    -raeder: int
+    -sitzplaetze: int
+    +starteMotor(): void
+}
+
+class Bus {
+    +verkaufeTicket(): void
+}
+@enduml

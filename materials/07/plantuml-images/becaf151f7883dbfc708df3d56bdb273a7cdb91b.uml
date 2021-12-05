@@ -1,0 +1,5 @@
+@startuml
+!theme plain
+scale 2.0
+Fahrzeug <|-- "erbt von" Bus
+@enduml

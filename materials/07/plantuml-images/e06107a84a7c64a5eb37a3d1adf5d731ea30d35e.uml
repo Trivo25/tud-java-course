@@ -1,0 +1,34 @@
+@startuml
+!theme plain
+scale 2.0
+skinparam classAttributeIconSize 0
+hide circle
+
+class Programm {
+    <u>+main(String[]): void
+    <u>+tellStory(): void
+}
+
+Person <|-- Student
+Person <|-- Dozent
+
+class Person {
+    -name: String
+    -alter: int
+    +Person(String, int)
+    +speak(): void
+    +sleep(): void
+}
+
+class Student {
+    -currentSemester: int
+    +Student(String, int, int)
+    +study(): void
+}
+
+class Dozent {
+    -subject: String
+    +Dozent(String, int, String)
+    +teach(): void
+}
+@enduml

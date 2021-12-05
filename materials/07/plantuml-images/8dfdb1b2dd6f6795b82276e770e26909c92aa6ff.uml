@@ -1,0 +1,12 @@
+@startuml
+!theme plain
+scale 2.0
+skinparam classAttributeIconSize 0
+hide circle
+
+class Fahrzeug {
+    -raeder: int
+    -sitzplaetze: int
+    +starteMotor(): void
+}
+@enduml
