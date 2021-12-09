@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="https://github.com/Trivo25/tud-java-course">
-  <meta name="dcterms.date" content="2021-12-09">
-  <title>8th Java Lesson (Java Course @ TUD)</title>
+  <meta name="dcterms.date" content="2021-12-16">
+  <title>9th Java Lesson (Java Course @ TUD)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -92,9 +92,9 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">8th Java Lesson (Java Course @ TUD)</h1>
+  <h1 class="title">9th Java Lesson (Java Course @ TUD)</h1>
   <p class="author"><a href="https://github.com/Trivo25/tud-java-course">https://github.com/Trivo25/tud-java-course</a></p>
-  <p class="date">December 09, 2021</p>
+  <p class="date">December 16, 2021</p>
 </section>
 
 <section class="slide level1">
@@ -125,7 +125,7 @@
 <h1>Java</h1>
 <h2 id="objektorientierte-programmierung">Objektorientierte Programmierung</h2>
 <p>Florian Kluge, Moritz Schulz</p>
-<ol start="9" type="1">
+<ol start="16" type="1">
 <li>Dezember 2021</li>
 </ol>
 <p><br></p>
@@ -137,9 +137,12 @@
 <h2 id="was-wir-heute-machen">Was wir heute machen</h2>
 <p><strong>Objektorientierte Programmierung: Vererbung</strong></p>
 <ol type="1">
-<li>Beispielaufgabe UML und Verberung vom letzten Mal</li>
+<li>Kurze Wiederholung zu Vererbung</li>
 <li>Overloading</li>
-<li>Overriding, super() und die Object-Klasse</li>
+<li>Overriding</li>
+<li>super()</li>
+<li>die Object-Klasse</li>
+<li>Aufgabe</li>
 </ol>
 </section>
 <section class="slide level1">
@@ -220,11 +223,11 @@
 <section class="slide level1">
 
 <h3 id="overloading---gegenbeispiel">Overloading - Gegenbeispiel</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">sumInt</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">float</span> <span class="fu">sumFloat</span><span class="op">(</span><span class="dt">float</span> a<span class="op">,</span> <span class="dt">float</span> b<span class="op">)</span> <span class="op">{}</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">double</span> <span class="fu">sumDouble</span><span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span> <span class="op">{}!</span></span></code></pre></div>
+<pre class="java=1"><code>static int sumInt(int a, int b) {}
+
+static float sumFloat(float a, float b) {}
+
+static double sumDouble(double a, double b) {}!</code></pre>
 <ul>
 <li>Methoden/Funktionen mit gleicher Aufgabe, aber komplett anderen Namen
 <ul>
@@ -236,23 +239,24 @@
 <section class="slide level1">
 
 <h3 id="overloading---good">Overloading - good!</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{}</span> <span class="co">// Funktion, welche a + b rechnet</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">float</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">float</span> a<span class="op">,</span> <span class="dt">float</span> b<span class="op">)</span> <span class="op">{}</span> <span class="co">// nun mit Datentyp float!</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">double</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span> <span class="op">{}</span> <span class="co">// .. oder double!</span></span></code></pre></div>
+<pre class="java=1"><code>static int sum(int a, int b) {} // Funktion, welche a + b rechnet
+
+static float sum(float a, float b) {} // nun mit Datentyp float!
+
+static double sum(double a, double b) {} // .. oder double!</code></pre>
 </section>
 <section class="slide level1">
 
 <h3 id="overloading---nutzung-in-java">Overloading - Nutzung in Java</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">float</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">float</span> a<span class="op">,</span> <span class="dt">float</span> b<span class="op">)</span> <span class="op">{}</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">double</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span> <span class="op">{}</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">// zum Beispiel in main(String[] args):</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span><span class="dv">5</span><span class="op">);</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span><span class="op">(</span><span class="fl">4.3f</span><span class="op">,</span> <span class="fl">5.0f</span><span class="op">);</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span><span class="op">(</span><span class="fl">0.3d</span><span class="op">,</span> <span class="fl">16.d</span><span class="op">);</span></span></code></pre></div>
+<pre class="java=1"><code>static int sum(int a, int b) {}
+static float sum(float a, float b) {}
+static double sum(double a, double b) {}
+
+// zum Beispiel in main(String[] args):
+    sum(3,5);
+    sum(4.3f, 5.0f);
+    sum(0.3d, 16.d);
+</code></pre>
 <ul>
 <li>Java sucht sich die richtige Methode passend zu den hinzugefügten Datentypen!</li>
 </ul>
@@ -261,55 +265,58 @@
 
 <h3 id="overloading-1">Overloading</h3>
 <p>das geht natürlich auch mit anderen Datentypen:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">printTwoVariables</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="bu">String</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;a: &quot;</span> <span class="op">+</span> a <span class="op">+</span> <span class="st">&quot; b: &quot;</span> <span class="op">+</span> b<span class="op">);</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">printTwoVariables</span><span class="op">(</span><span class="dt">boolean</span> a<span class="op">,</span> <span class="bu">String</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;a: &quot;</span> <span class="op">+</span> a <span class="op">+</span> <span class="st">&quot; b: &quot;</span> <span class="op">+</span> b<span class="op">);</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<pre class="java=1"><code>    public static void printTwoVariables(int a, String b) {
+        System.out.println(&quot;a: &quot; + a + &quot; b: &quot; + b);
+    }
+
+    public static void printTwoVariables(boolean a, String b) {
+        System.out.println(&quot;a: &quot; + a + &quot; b: &quot; + b);
+    }
+</code></pre>
 </section>
 <section class="slide level1">
 
 <h3 id="overloading-2">Overloading</h3>
 <p>mit Overloading können wir auch die Anzahl der Variablen verändern</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">+</span> b<span class="op">);</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">,</span> <span class="dt">int</span> c<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">+</span> b <span class="op">+</span> c<span class="op">);</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">,</span> <span class="dt">int</span> c<span class="op">,</span> <span class="dt">int</span> d<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">+</span> b <span class="op">+</span> c <span class="op">+</span> d<span class="op">);</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">// zum Beispiel in main(String[] args):</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span> <span class="co">// 2</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span> <span class="co">// 3</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span> <span class="co">// 4</span></span></code></pre></div>
+<pre class="java=1"><code>
+public static void sumOfMultiple(int a, int b) {
+System.out.println(a + b);
+}
+
+public static void sumOfMultiple(int a, int b, int c) {
+System.out.println(a + b + c);
+}
+
+public static void sumOfMultiple(int a, int b, int c, int d) {
+System.out.println(a + b + c + d);
+}
+
+// zum Beispiel in main(String[] args):
+  
+  sumOfMultiple(1, 1); // 2
+  sumOfMultiple(1, 1, 1); // 3
+  sumOfMultiple(1, 1, 1, 1); // 4
+</code></pre>
 </section>
 <section class="slide level1">
 
 <h3 id="overloading-3">Overloading</h3>
 <p><code>constructors</code> können auch ‘overloaded’ werden</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Quadrat <span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> hoehe<span class="op">,</span> breite<span class="op">;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Quadrat</span><span class="op">(</span><span class="dt">int</span> h<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">hoehe</span> <span class="op">=</span> h<span class="op">;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">breite</span> <span class="op">=</span> b<span class="op">;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Seitenlaenge hoehe gleich breite wenn nur ein Parameter uebergeben wird</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Quadrat</span><span class="op">(</span><span class="dt">int</span> a<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">hoehe</span> <span class="op">=</span> a<span class="op">;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">breite</span> <span class="op">=</span> a<span class="op">;</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<pre class="java=1"><code>class Quadrat {
+    int hoehe, breite;
+    
+    public Quadrat(int h, int b) {
+        this.hoehe = h;
+        this.breite = b;
+    }
+    
+    // Seitenlaenge hoehe gleich breite wenn nur ein Parameter uebergeben wird
+    public Quadrat(int a) {
+        this.hoehe = a;
+        this.breite = a;
+    }
+}
+</code></pre>
 </section>
 <section class="slide level1">
 
@@ -327,28 +334,28 @@
 <li>wer ganz schnell ist: einen Array als Parameter</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// so soll es verwendet werden:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a <span class="op">=</span> <span class="fu">product</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> b <span class="op">=</span> <span class="fu">product</span><span class="op">(</span><span class="fl">3.1f</span><span class="op">,</span> <span class="fl">0.3f</span><span class="op">);</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> d <span class="op">=</span> <span class="fu">product</span><span class="op">(</span><span class="fl">6.6d</span><span class="op">,</span> <span class="fl">1.12d</span><span class="op">);</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">// wie sehen die einzelnen Methoden aus?</span></span></code></pre></div>
+<pre class="java=1"><code>// so soll es verwendet werden:
+
+int a = product(3, 3);
+float b = product(3.1f, 0.3f);
+double d = product(6.6d, 1.12d);
+
+// wie sehen die einzelnen Methoden aus?</code></pre>
 </section>
 <section class="slide level1">
 
 <h3 id="overloading---aufgabe-1">Overloading - Aufgabe</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">product</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">*</span> b<span class="op">);</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">float</span> <span class="fu">product</span><span class="op">(</span><span class="dt">float</span> a<span class="op">,</span> <span class="dt">float</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">*</span> b<span class="op">);</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">double</span> <span class="fu">product</span><span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">*</span> b<span class="op">);</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<pre class="java=1"><code>static int product(int a, int b) {
+    System.out.println(a * b);
+}
+
+static float product(float a, float b) {
+    System.out.println(a * b);
+}
+
+static double product(double a, double b) {
+    System.out.println(a * b);
+}</code></pre>
 </section>
 <section class="slide level1">
 
@@ -379,22 +386,22 @@
 <section class="slide level1">
 
 <h3 id="overriding-1">Overriding</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Animal <span class="op">{</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">makeSound</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;some generic animal sound&quot;</span><span class="op">);</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Pig <span class="kw">extends</span> Animal <span class="op">{</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">makeSound</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;oiinkk&quot;</span><span class="op">);</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">// zum Beispiel in main(String[] args):</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    Pig pig1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Pig</span><span class="op">();</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    pig1<span class="op">.</span><span class="fu">makeSound</span><span class="op">()</span> <span class="co">// &#39;oiinkk&#39; und nicht &#39;some generic animal sound&#39;</span></span></code></pre></div>
+<pre class="java=1"><code>public class Animal {
+    public void makeSound() {
+        System.out.println(&quot;some generic animal sound&quot;);
+    }
+}
+
+class Pig extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println(&quot;oiinkk&quot;);
+    }
+}
+
+// zum Beispiel in main(String[] args):
+    Pig pig1 = new Pig();
+    pig1.makeSound() // &#39;oiinkk&#39; und nicht &#39;some generic animal sound&#39;</code></pre>
 </section>
 <section class="slide level1">
 
@@ -432,18 +439,18 @@
 <li>innerhalb des Konstruktors der Kind-Klasse <code>subclass</code></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> SuperClass <span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">SuperClass</span><span class="op">(</span><span class="bu">String</span> a<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a<span class="op">);</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AnotherClass <span class="kw">extends</span> SuperClass <span class="op">{</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">AnotherClass</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ruft den Konstruktor der Eltern-Klasse auf und übergibt die benoetigen Parameter</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span><span class="st">&quot;some string!&quot;</span><span class="op">);</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<pre class="java=1"><code>public class SuperClass {
+    public SuperClass(String a) {
+        System.out.println(a);
+    }
+}
+
+class AnotherClass extends SuperClass {
+    public AnotherClass() {
+        // ruft den Konstruktor der Eltern-Klasse auf und übergibt die benoetigen Parameter
+        super(&quot;some string!&quot;);
+    }
+}</code></pre>
 </section>
 <section class="slide level1">
 
@@ -453,19 +460,19 @@
 <li>Person hat einen Namen</li>
 <li>also hat Student auch einen Namen</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Person <span class="op">{</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> name<span class="op">;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">SomeClass</span><span class="op">(</span><span class="bu">String</span> name<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student <span class="kw">extends</span> Person <span class="op">{</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Student</span><span class="op">(</span><span class="bu">String</span> name<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span>name<span class="op">);</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<pre class="java=1"><code>public class Person {
+    String name;
+    
+    public SomeClass(String name) {
+        this.name = name;
+    }
+}
+
+class Student extends Person {
+    public Student(String name) {
+        super(name);
+    }
+}</code></pre>
 </section>
 <section class="slide level1">
 
@@ -573,11 +580,23 @@
 <section class="slide level1">
 
 <h2 id="nächste-stunde">Nächste Stunde</h2>
+<ul>
+<li>Weiterführende Konzepte zu Objektorientierter Programmierung</li>
+</ul>
 </section>
 <section class="slide level1">
 
-<h2 id="tipp-advent-of-code">Tipp: Advent of Code</h2>
-<p><a href="https://adventofcode.com/2021">https://adventofcode.com/2021</a></p>
+<h2 id="tipps">Tipps:</h2>
+<ul>
+<li>Advent of Code (tägliche Programmieraufgaben):
+<ul>
+<li><a href="https://adventofcode.com/2021">https://adventofcode.com/2021</a></li>
+</ul></li>
+<li>Aufgabe der letzten Stunde: “Adventskalender”:
+<ul>
+<li><a href="https://trivo25.github.io/tud-java-course/materials/08/task.html">https://trivo25.github.io/tud-java-course/materials/08/task.html</a></li>
+</ul></li>
+</ul>
 </section>
 <section class="slide level1">
 
