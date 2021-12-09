@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="https://github.com/Trivo25/tud-java-course">
+  <meta name="dcterms.date" content="2021-12-09">
+  <title>8th Java Lesson (Java Course @ TUD)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.2.0/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.2.0/dist/reveal.css">
+  <style>
+	* { --r-heading-text-transform: none; }
+    code{white-space: pre-wrap;background-color: #111;}
+    code:not(.sourceCode){background-color: #333;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode { border: 1px solid #888; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #67fff0; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #abe15b; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #ffb900; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #008df8; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #9a5feb; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.2.0/dist/theme/black.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">8th Java Lesson (Java Course @ TUD)</h1>
+  <p class="author"><a href="https://github.com/Trivo25/tud-java-course">https://github.com/Trivo25/tud-java-course</a></p>
+  <p class="date">December 09, 2021</p>
+</section>
+
+<section class="slide level1">
+
+<style>
+    .reveal {
+        font-size: 30px !important;
+    }
+    .reveal code.hljs {
+        background-color: #0a0a0a !important;
+        border: 1px solid white;
+    }
+</style>
+</section>
+<section id="während-ihr-darauf-wartet-dass-es-beginnt.." class="slide level1">
+<h1>Während Ihr darauf wartet, dass es beginnt..</h1>
+<ul>
+<li>überprüfen wir Euren 3G-Status</li>
+<li>könnt ihr nochmal die Folien aus der letzten Stunde anschauen
+<ul>
+<li>hier verlinkt: <a href="https://trivo25.github.io/tud-java-course/">https://trivo25.github.io/tud-java-course/</a></li>
+</ul></li>
+<li>VS Code oder <a href="https://www.jdoodle.com/online-java-compiler/ öffnen">https://www.jdoodle.com/online-java-compiler/ öffnen</a></li>
+<li>die Cheat Sheet öffnen: <a href="http://tiny.cc/java-cs">http://tiny.cc/java-cs</a></li>
+</ul>
+</section>
+<section id="java" class="slide level1">
+<h1>Java</h1>
+<h2 id="objektorientierte-programmierung">Objektorientierte Programmierung</h2>
+<p>Florian Kluge, Moritz Schulz</p>
+<ol start="9" type="1">
+<li>Dezember 2021</li>
+</ol>
+<p><br></p>
+<p>Florian.Kluge@mailbox.tu-dresden.de</p>
+<p>Moritz.Schulz2@mailbox.tu-dresden.de</p>
+</section>
+<section class="slide level1">
+
+<h2 id="was-wir-heute-machen">Was wir heute machen</h2>
+<p><strong>Objektorientierte Programmierung: Vererbung</strong></p>
+<ol type="1">
+<li>Beispielaufgabe UML und Verberung vom letzten Mal</li>
+<li>Overloading</li>
+<li>Overriding, super() und die Object-Klasse</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<h3 id="contact">Contact</h3>
+<p>Florian Kluge</p>
+<p>Florian.Kluge@mailbox.tu-dresden.de</p>
+<p>Moritz Schulz</p>
+<p>Moritz.Schulz2@mailbox.tu-dresden.de</p>
+</section>
+<section class="slide level1">
+
+<h2 id="kurze-info-zum-kurs">Kurze Info zum Kurs</h2>
+<ul>
+<li>bitte abmelden / entschuldigen, wenn ihr nicht kommt
+<ul>
+<li>zwei Mal in Folge unentschuldigt fehlen =&gt; ausgetragen</li>
+</ul></li>
+<li>praktische Aufgaben- und Beispiel-basierte Lernweise
+<ul>
+<li>wir laufen herum und gucken, dass ihr zurecht kommt</li>
+</ul></li>
+<li>bitte, fragt gern, jederzeit
+<ul>
+<li>auch per E-Mail / via Kursseite</li>
+</ul></li>
+<li>uns geht es darum, alle mitzunehmen</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="stay-up-to-date">Stay up to date</h2>
+<ul>
+<li>die E-Mails der TUD regelmäßig überprüfen
+<ul>
+<li>z.B. Bekanntgabe der Veröffentlichung der Folien
+<ul>
+<li>auf der Seite des Programmierkurses</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="los-gehts" class="slide level1">
+<h1>Los geht’s!</h1>
+</section>
+<section class="slide level1">
+
+<h3 id="kurze-wiederholung">kurze Wiederholung</h3>
+<ul>
+<li>am Beispiel der Aufgabe vom letzten Mal
+<ul>
+<li>static</li>
+<li>Vererbung mit <code>extends</code></li>
+<li><code>superclass</code> und <code>subclass</code></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h4 id="vererbung-und-uml---aufgabe">Vererbung und UML - Aufgabe</h4>
+<p><img data-src="plantuml-images/b2a94faabf8fa35be6fbf5b8aee51f7def326780.png" /></p>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading">Overloading</h3>
+<ul>
+<li>Overloading ermöglicht es uns mehreren Methoden/Funktionen mit gleichem Namen verschiedene Parameter zu zuweisen
+<ul>
+<li>gleicher Name, aber unterschiedliche Parameter (und Datentypen)</li>
+</ul></li>
+<li>Beispiel:
+<ul>
+<li><code>String meineMethode(int param)</code></li>
+<li><code>void meineMethode(String param)</code></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading---gegenbeispiel">Overloading - Gegenbeispiel</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">sumInt</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">float</span> <span class="fu">sumFloat</span><span class="op">(</span><span class="dt">float</span> a<span class="op">,</span> <span class="dt">float</span> b<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">double</span> <span class="fu">sumDouble</span><span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span> <span class="op">{}!</span></span></code></pre></div>
+<ul>
+<li>Methoden/Funktionen mit gleicher Aufgabe, aber komplett anderen Namen
+<ul>
+<li>sorgt für unnötige Komplexität</li>
+</ul></li>
+<li>stattdessen: Overloading!</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading---good">Overloading - good!</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{}</span> <span class="co">// Funktion, welche a + b rechnet</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">float</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">float</span> a<span class="op">,</span> <span class="dt">float</span> b<span class="op">)</span> <span class="op">{}</span> <span class="co">// nun mit Datentyp float!</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">double</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span> <span class="op">{}</span> <span class="co">// .. oder double!</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading---nutzung-in-java">Overloading - Nutzung in Java</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">float</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">float</span> a<span class="op">,</span> <span class="dt">float</span> b<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">double</span> <span class="fu">sum</span><span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">// zum Beispiel in main(String[] args):</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span><span class="op">(</span><span class="fl">4.3f</span><span class="op">,</span> <span class="fl">5.0f</span><span class="op">);</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span><span class="op">(</span><span class="fl">0.3d</span><span class="op">,</span> <span class="fl">16.d</span><span class="op">);</span></span></code></pre></div>
+<ul>
+<li>Java sucht sich die richtige Methode passend zu den hinzugefügten Datentypen!</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading-1">Overloading</h3>
+<p>das geht natürlich auch mit anderen Datentypen:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">printTwoVariables</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="bu">String</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;a: &quot;</span> <span class="op">+</span> a <span class="op">+</span> <span class="st">&quot; b: &quot;</span> <span class="op">+</span> b<span class="op">);</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">printTwoVariables</span><span class="op">(</span><span class="dt">boolean</span> a<span class="op">,</span> <span class="bu">String</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;a: &quot;</span> <span class="op">+</span> a <span class="op">+</span> <span class="st">&quot; b: &quot;</span> <span class="op">+</span> b<span class="op">);</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading-2">Overloading</h3>
+<p>mit Overloading können wir auch die Anzahl der Variablen verändern</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">+</span> b<span class="op">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">,</span> <span class="dt">int</span> c<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">+</span> b <span class="op">+</span> c<span class="op">);</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">,</span> <span class="dt">int</span> c<span class="op">,</span> <span class="dt">int</span> d<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">+</span> b <span class="op">+</span> c <span class="op">+</span> d<span class="op">);</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">// zum Beispiel in main(String[] args):</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span> <span class="co">// 2</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span> <span class="co">// 3</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sumOfMultiple</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span> <span class="co">// 4</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading-3">Overloading</h3>
+<p><code>constructors</code> können auch ‘overloaded’ werden</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Quadrat <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> hoehe<span class="op">,</span> breite<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Quadrat</span><span class="op">(</span><span class="dt">int</span> h<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">hoehe</span> <span class="op">=</span> h<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">breite</span> <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Seitenlaenge hoehe gleich breite wenn nur ein Parameter uebergeben wird</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Quadrat</span><span class="op">(</span><span class="dt">int</span> a<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">hoehe</span> <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">breite</span> <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading---aufgabe">Overloading - Aufgabe</h3>
+<ul>
+<li>schreibt die overloaded Funktion <code>static ... product(/* .. Parameter .. */)</code>
+<ul>
+<li>sie multipliziert zwei Zahlen <code>a * b</code> für verschiedene Datentypen</li>
+<li>Name der Funktion muss gleich bleiben!</li>
+<li>Datentypen: <code>float</code>, <code>double</code>, <code>int</code></li>
+</ul></li>
+<li>Erweiterungsideen
+<ul>
+<li>auch für 3 Parameter</li>
+<li>wer ganz schnell ist: einen Array als Parameter</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// so soll es verwendet werden:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a <span class="op">=</span> <span class="fu">product</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> b <span class="op">=</span> <span class="fu">product</span><span class="op">(</span><span class="fl">3.1f</span><span class="op">,</span> <span class="fl">0.3f</span><span class="op">);</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> d <span class="op">=</span> <span class="fu">product</span><span class="op">(</span><span class="fl">6.6d</span><span class="op">,</span> <span class="fl">1.12d</span><span class="op">);</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">// wie sehen die einzelnen Methoden aus?</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="overloading---aufgabe-1">Overloading - Aufgabe</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">product</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">*</span> b<span class="op">);</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">float</span> <span class="fu">product</span><span class="op">(</span><span class="dt">float</span> a<span class="op">,</span> <span class="dt">float</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">*</span> b<span class="op">);</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">double</span> <span class="fu">product</span><span class="op">(</span><span class="dt">double</span> a<span class="op">,</span> <span class="dt">double</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">*</span> b<span class="op">);</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="das-war-schon-overloading">Das war schon Overloading</h3>
+<ul>
+<li>Mehrere Methoden / Funktionen, die
+<ul>
+<li>den gleichen Namen haben</li>
+<li>andere Paramter und Rückgabewerte haben
+<ul>
+<li>Datentyp, Anzahl</li>
+</ul></li>
+</ul></li>
+<li>Java muss aber immer noch wissen, was gemeint ist!
+<ul>
+<li>z.B. keine zwei Funktionen, die genau gleich sind</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="overriding">Overriding</h3>
+<ul>
+<li>Overriding erlaubt uns Methoden der Eltern-Klasse (<code>superclass</code>) zu überschreiben</li>
+<li>dazu schreiben wir vor die Methode <code>@Override</code></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="overriding-1">Overriding</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Animal <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">makeSound</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;some generic animal sound&quot;</span><span class="op">);</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Pig <span class="kw">extends</span> Animal <span class="op">{</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">makeSound</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;oiinkk&quot;</span><span class="op">);</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">// zum Beispiel in main(String[] args):</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    Pig pig1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Pig</span><span class="op">();</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    pig1<span class="op">.</span><span class="fu">makeSound</span><span class="op">()</span> <span class="co">// &#39;oiinkk&#39; und nicht &#39;some generic animal sound&#39;</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="overriding-2">Overriding</h3>
+<ul>
+<li>wir können also Methoden aus der Elternklasse überschreiben und nach belieben anpassen
+<ul>
+<li>manche Klasse benötigen die gleichen Methoden wie ihre Eltern-Klasse aber eine andere Ausführung</li>
+</ul></li>
+<li>ABER: return-Datentyp UND Parameter MÜSSEN gleich sein!</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="vergleich---overriding-und-overloading">Vergleich - Overriding und Overloading</h3>
+<ul>
+<li>Overloading:
+<ul>
+<li>erlaubt, Funktionen mit unterschiedlichen Parameter gleich zu nennen</li>
+<li>generell genutzt</li>
+</ul></li>
+<li>Overriding:
+<ul>
+<li>überschreibt die Ausführung der Methode in der <code>superclass</code></li>
+<li>Verwendung nur im Zusammenhang mit Vererbung</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="super">super()</h3>
+<ul>
+<li>mit super() rufen wir den Konstruktor der Eltern-Klasse auf
+<ul>
+<li>innerhalb des Konstruktors der Kind-Klasse <code>subclass</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> SuperClass <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">SuperClass</span><span class="op">(</span><span class="bu">String</span> a<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a<span class="op">);</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AnotherClass <span class="kw">extends</span> SuperClass <span class="op">{</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">AnotherClass</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ruft den Konstruktor der Eltern-Klasse auf und übergibt die benoetigen Parameter</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span><span class="st">&quot;some string!&quot;</span><span class="op">);</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="super---beispiel">super() - Beispiel</h3>
+<ul>
+<li>Student erbt von Person</li>
+<li>Person hat einen Namen</li>
+<li>also hat Student auch einen Namen</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Person <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> name<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">SomeClass</span><span class="op">(</span><span class="bu">String</span> name<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student <span class="kw">extends</span> Person <span class="op">{</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Student</span><span class="op">(</span><span class="bu">String</span> name<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span>name<span class="op">);</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="wieso-eigentlich-super">Wieso eigentlich super()?</h3>
+<ul>
+<li>vermeidet Dopplung von Code
+<ul>
+<li>siehe Beispiel zuvor: Attribut <code>name</code> übernehmen</li>
+</ul></li>
+<li>kann auch Standardwerte festlegen
+<ul>
+<li><code>Professor extends Person</code> könnte Standardwert für <code>Beruf</code> festlegen</li>
+</ul></li>
+<li>kann spezialisieren
+<ul>
+<li>Beispiel unten</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Rechteck <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> breite<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> hoehe<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Rechteck</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">breite</span> <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">hoehe</span> <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Quadrat <span class="kw">extends</span> Rechteck <span class="op">{</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Quadrat</span><span class="op">(</span><span class="dt">int</span> a<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span>a<span class="op">,</span>a<span class="op">);</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="object-klasse">Object-Klasse</h3>
+<p><em>‘Class Object is the root of the class hierarchy. Every class has Object as a superclass. All objects, including arrays, implement the methods of this class.’</em></p>
+<p>aus der Dokumentation: [<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html</a>](<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html)">https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html)</a></p>
+</section>
+<section class="slide level1">
+
+<h3 id="object-klasse-1">Object-Klasse</h3>
+<ul>
+<li>jede Klasse erbt von <code>Object</code>
+<ul>
+<li>jede Klasse hat auch Zugriff auf die Methoden der Klasse Object!</li>
+<li>Beispiel:
+<ul>
+<li><code>String toString()</code></li>
+</ul></li>
+<li>Hinweis: <code>System.out.println()</code> ruft immer die Methode <code>toString()</code> auf!</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="object-klasse-2">Object-Klasse</h3>
+<pre><code>public class Person {
+    String name;
+    public Person(String name) {
+        this.name = name;
+    }
+    
+    public String toString() {
+        return &quot;Die Person namens &quot; + this.name;
+    }
+}
+
+// zum Beispiel in main(String[] args):
+    Person max = new Person(&quot;Max&quot;);
+
+    // ruft automatisch max.toString() auf!
+    System.out.println(max);
+    // gibt aus: &#39;Hallo, mein Name ist Max&#39;</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="mit-neuem-wissen">mit neuem Wissen…</h3>
+<ul>
+<li>Aufgabe weiterbearbeiten, falls noch nicht fertig
+<ul>
+<li>wichtig: Klassenstruktur des UML-Diagramms so in Java übernehmen!</li>
+</ul></li>
+<li>Anwendung von <code>toString()</code> zur Beschreibung der Person</li>
+<li>Nutzung von <code>super()</code> für die Konstruktoren von <code>Student</code>, <code>Dozent</code></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<ul>
+<li>Anwendung von <code>toString()</code> zur Beschreibung der Person</li>
+<li>Nutzung von <code>super()</code> für die Konstruktoren von <code>Student</code>, <code>Dozent</code></li>
+</ul>
+<p><img data-src="plantuml-images/b2a94faabf8fa35be6fbf5b8aee51f7def326780.png" /></p>
+</section>
+<section class="slide level1">
+
+<h2 id="pro-tipp-lernt-documentations-zu-lesen">Pro-Tipp: <strong>Lernt Documentations zu lesen!</strong></h2>
+<ul>
+<li>Dokumentation ist wie ein vollständiges Cheat Sheet</li>
+<li>Websuche nach: <code>Java Dokumentation</code></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="nächste-stunde">Nächste Stunde</h2>
+</section>
+<section class="slide level1">
+
+<h2 id="tipp-advent-of-code">Tipp: Advent of Code</h2>
+<p><a href="https://adventofcode.com/2021">https://adventofcode.com/2021</a></p>
+</section>
+<section class="slide level1">
+
+<h2 id="links-contact-info-feedback">Links, Contact Info, Feedback</h2>
+<p>See course materials here: <a href="https://trivo25.github.io/tud-java-course/">https://trivo25.github.io/tud-java-course/</a></p>
+<p>Check out the Cheat Sheet: <a href="http://tiny.cc/java-cs">http://tiny.cc/java-cs</a></p>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@4.2.0/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@4.2.0/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.2.0/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.2.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
