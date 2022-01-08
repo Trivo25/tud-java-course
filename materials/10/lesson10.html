@@ -140,7 +140,6 @@
 <li>type casts</li>
 <li><code>instanceof</code></li>
 <li>interfaces</li>
-<li>enums</li>
 <li>Exceptions</li>
 </ul>
 </section>
@@ -254,10 +253,14 @@
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <ul>
-<li>Umwandlung (Type Cast) ermöglicht Verwendung spezieller Methoden
+<li>Umwandlung (Type Cast) ermöglicht Verwendung spezieller Methoden</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="verwendung-instanceof-und-type-casts-1">Verwendung: <code>instanceof</code> und Type Casts</h2>
 <ul>
-<li><code>p.teach()</code> und <code>p.study()</code> würden nicht gehen, denn die Methoden sind in der Klasse <code>Person</code> nicht vorhanden</li>
-</ul></li>
+<li>übrigens: <code>p.teach()</code> und <code>p.study()</code> würden nicht gehen, denn die Methoden sind in der Klasse <code>Person</code> nicht vorhanden</li>
 </ul>
 <pre><code>Instanceof.java:10: error: cannot find symbol
               p.teach();
@@ -363,24 +366,24 @@ location: variable p of type Person</code></pre>
 
 <h3 id="aufgabe-1-zu-interfaces-teil-1">Aufgabe 1 zu Interfaces (Teil 1)</h3>
 <p>Arbeite hier gern mit mehreren Dateien.</p>
-<ul>
+<ol type="1">
 <li>Deklariere ein Interface <code>Form</code>, das eine Methode <code>float getFlaeche()</code> fordert.</li>
 <li>Implementiere das Interface für 2 Klassen: <code>Rechteck</code> und <code>Dreieck</code> (Konstruktoren, <code>implements</code>, <code>float getFlaeche()</code>)</li>
 <li>Teste, ob der Code wie gewünscht funktioniert, indem du jeweils zwei Rechtecke und zwei Dreiecke erstellst und deren Fläche in der Konsole ausgeben lässt: <code>System.out.println(flaeche1);</code> …</li>
 <li>Überschreibe (<code>@Override</code>) die <code>String toString()</code>-Methode in den Klassen, und verwende sie, um auch das Objekt in der Konsole auszugeben</li>
-</ul>
+</ol>
 </section>
 <section class="slide level1">
 
 <h3 id="aufgabe-1-zu-interfaces-teil-2">Aufgabe 1 zu Interfaces (Teil 2)</h3>
-<ul>
+<ol start="5" type="1">
 <li>Lasse die beiden Klassen <code>Rechteck</code> und <code>Dreieck</code> das <code>Comparable&lt;Form&gt;</code>-Interface implementieren. Vergleiche in der Methode <code>int compareTo(Form f)</code> die Flächen entsprechend.</li>
 <li>Lege einen Array <code>Form[] formen</code> von den vier Objekten an (<code>= {r1,r2,d1,d2}</code>).</li>
 <li>Wir brauchen die <code>Arrays</code>-Klasse für den nächsten Schritt: <code>import java.util.Arrays;</code></li>
 <li>Gib <code>formen</code> aus, indem du <code>Arrays.toString(formen)</code> verwendest.</li>
 <li>Nutze <code>Arrays.sort(formen)</code>, um das Array zu sortieren.</li>
 <li>Gib <code>formen</code> auch nach dem Sortiervorgang aus.</li>
-</ul>
+</ol>
 </section>
 <section class="slide level1">
 
@@ -394,161 +397,6 @@ location: variable p of type Person</code></pre>
 </ul>
 <p>Setze dies mit einem Array um. Sollte der Array irgendwann zu klein sein, um noch eine weitere Zahl zu halten, musst du einen neuen Array erstellen und zunächst alle Elemente kopieren.</p>
 <p>Teste deine Implementierung mit kleinen und großen Queues.</p>
-</section>
-<section id="errors-exceptions" class="slide level1">
-<h1>Errors (Exceptions)</h1>
-<ul>
-<li>es gibt verschiedene Typen von Laufzeitfehlern
-<ul>
-<li>logische Fehler (coding errors)</li>
-<li>Fehler Aufgrund von falschen Input</li>
-<li>oder unvorhersehbare Fehler</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level1">
-
-<h3 id="error-handling">Error Handling</h3>
-<ul>
-<li>wenn ein Fehler auftritt, “wirft” Java einen Fehler</li>
-<li>Fehler kann man auffangen</li>
-<li>Fehler werden in der “Parent”-Funktion aufgefangen, und in der “Child”-Funktion geworfen</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="dt">static</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">funktionDieFehlerWirft</span><span class="op">();</span> <span class="co">// Fehler hier auffangen!</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">funktionDieFehlerWirft</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fehler hier Fangen!</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</section>
-<section class="slide level1">
-
-<h3 id="error-handling-1">Error Handling</h3>
-<ul>
-<li>in einem <code>try</code>-Block können wir Code prüfen, ob er Fehler wirft</li>
-<li>mit <code>catch</code>-Statement fangen wir mögliche Fehler auf und können damit arbeiten</li>
-</ul>
-</section>
-<section class="slide level1">
-
-<h3 id="error-handling-2">Error Handling</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Code welcher Fehler werfen kann</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fehler auffangen</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</section>
-<section class="slide level1">
-
-<h3 id="error-handling-3">Error Handling</h3>
-<ul>
-<li>Arrays haben eine bestimmte Länge
-<ul>
-<li>wenn man auf ein Element zureifen will, welcher nicht existiert, entsteht ein Fehler</li>
-<li><code>java.lang.ArrayIndexOutOfBoundsException</code></li>
-</ul></li>
-<li>als Resultat stürzt das Programm ab..</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[</span> <span class="op">]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>numbers<span class="op">[</span><span class="dv">5</span><span class="op">]);</span> <span class="co">// Java wirft einen Fehler!</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Ende des Programms&quot;</span><span class="op">);</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</section>
-<section class="slide level1">
-
-<h3 id="error-handling-4">Error Handling</h3>
-<ul>
-<li>wie fängt man so einen Fehler nun auf, ohne dass das Programm abstürzt?</li>
-</ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[</span> <span class="op">]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>       <span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>numbers<span class="op">[</span><span class="dv">5</span><span class="op">]);</span> <span class="co">// Java wirft einen Fehler! </span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Irgendwas ist schief gelaufen..&quot;</span><span class="op">);</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Ende des Programms&quot;</span><span class="op">);</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</section>
-<section class="slide level1">
-
-<h3 id="error-handling-5">Error Handling</h3>
-<ul>
-<li>neben <code>try</code> und <code>catch</code> gibt es noch einen <code>finally</code>-Block</li>
-<li>Code im ´finally´-Block wird immer nach ende des <code>try-catch</code>-Blocks ausgeführt</li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[</span> <span class="op">]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>       <span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>numbers<span class="op">[</span><span class="dv">5</span><span class="op">]);</span> <span class="co">// Java wirft einen Fehler! </span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Irgendwas ist schief gelaufen..&quot;</span><span class="op">);</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">finally</span> <span class="op">{</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;try-catch Block vorbei&quot;</span><span class="op">);</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Ende des Programms&quot;</span><span class="op">);</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</section>
-<section class="slide level1">
-
-<h3 id="error-handling-6">Error Handling</h3>
-<ul>
-<li>wir können auf selbst Fehler werfen!</li>
-<li>das <code>throw</code>-Keyword wirft einen Fehler</li>
-<li>ein Fehler muss immer einen Typ haben</li>
-<li>Beispiel:
-<ul>
-<li><code>ArithmeticException</code></li>
-<li><code>FileNotFoundException</code></li>
-<li><code>ArrayIndexOutOfBoundsException</code></li>
-<li><code>SecurityException</code></li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// do something</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">throw</span> <span class="kw">new</span> <span class="bu">FileNotFoundException</span><span class="op">(</span><span class="st">&quot;Die Datei konnte nicht gefunden werden..&quot;</span><span class="op">);</span></span></code></pre></div>
-</section>
-<section class="slide level1">
-
-<h3 id="error-handling-7">Error Handling</h3>
-<ul>
-<li>Beispiel: Alterüberprüfung</li>
-</ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">isOldEnough</span><span class="op">(</span><span class="dv">14</span><span class="op">);</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>e<span class="op">);</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="dt">boolean</span> <span class="fu">isOldEnough</span><span class="op">(</span><span class="dt">int</span> age<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>age <span class="op">&gt;=</span> <span class="dv">18</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span>    </span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">ArithmeticException</span><span class="op">(</span><span class="st">&quot;Nicht alt genug!&quot;</span><span class="op">);</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</section>
-<section class="slide level1">
-
-<ul>
-<li>Aufgabe: Schreibt ein Programm <code>sum(int a, int b)</code>, welcher die Summe von zwei Zahlen ausrechnet.</li>
-<li>Aber: Sollten eine der beiden Zahlen negativ sein, dann wirf einen Fehler und fangt diesen ab!</li>
-</ul>
 </section>
 <section class="slide level1">
 
