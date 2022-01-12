@@ -383,7 +383,7 @@
 <section class="slide level1">
 
 <h3 id="overriding-1">Overriding</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Animal <span class="op">{</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Animal <span class="op">{</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">makeSound</span><span class="op">()</span> <span class="op">{</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;some generic animal sound&quot;</span><span class="op">);</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
@@ -398,7 +398,7 @@
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">// zum Beispiel in main(String[] args):</span></span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    Pig pig1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Pig</span><span class="op">();</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    pig1<span class="op">.</span><span class="fu">makeSound</span><span class="op">()</span> <span class="co">// &#39;oiinkk&#39; und nicht &#39;some generic animal sound&#39;</span></span></code></pre></div>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    pig1<span class="op">.</span><span class="fu">makeSound</span><span class="op">();</span> <span class="co">// &#39;oiinkk&#39; und nicht &#39;some generic animal sound&#39;</span></span></code></pre></div>
 </section>
 <section class="slide level1">
 
