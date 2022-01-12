@@ -1,4 +1,4 @@
-public class beispielloesung {
+public class beispielloesung_4 {
 	public static void main(String[] args) {
 		Rechteck r1 = new Rechteck(10,3);
 		Rechteck r2 = new Rechteck(4,8);
@@ -15,7 +15,7 @@ interface Form {
 	public float getFlaeche();
 }
 
-class Rechteck implements Comparable<Form> {
+class Rechteck implements Form {
 	private float breite;
 	private float hoehe;
 
@@ -32,21 +32,9 @@ class Rechteck implements Comparable<Form> {
 	public String toString() {
 		return "Ein Rechteck der Breite " + this.breite + " und der Höhe " + this.hoehe;
 	}
-
-	@Override
-	public int compareTo(Form f) {
-		float diff = this.getFlaeche() - f.getFlaeche();
-		if (diff == 0) {
-			return 0;
-		} else if (diff < 0) {
-			return -1;
-		} else {
-			return 1;
-		}
-	}
 }
 
-class Dreieck implements Comparable<Form> {
+class Dreieck implements Form {
 	private float grundseite;
 	private float hoehe;
 
@@ -62,17 +50,5 @@ class Dreieck implements Comparable<Form> {
 	@Override
 	public String toString() {
 		return "Ein Dreieck mit Grundseite " + this.grundseite + " und der Höhe " + this.hoehe;
-	}
-
-	@Override
-	public int compareTo(Form f) {
-		float diff = this.getFlaeche() - f.getFlaeche();
-		if (diff == 0) {
-			return 0;
-		} else if (diff < 0) {
-			return -1;
-		} else {
-			return 1;
-		}
 	}
 }
