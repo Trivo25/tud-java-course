@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="https://github.com/Trivo25/tud-java-course">
+  <meta name="dcterms.date" content="2022-01-13">
+  <title>11th Java Lesson (Java Course @ TUD)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.2.0/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.2.0/dist/reveal.css">
+  <style>
+	* { --r-heading-text-transform: none; }
+    code{white-space: pre-wrap;background-color: #111;}
+    code:not(.sourceCode){background-color: #333;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode { border: 1px solid #888; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #67fff0; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #abe15b; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #ffb900; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #008df8; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #9a5feb; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.2.0/dist/theme/black.css" id="theme">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   var macros = [];
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      macros: macros,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">11th Java Lesson (Java Course @ TUD)</h1>
+  <p class="author"><a href="https://github.com/Trivo25/tud-java-course">https://github.com/Trivo25/tud-java-course</a></p>
+  <p class="date">January 13, 2022</p>
+</section>
+
+<section class="slide level1">
+
+<style>
+    .reveal {
+        font-size: 30px !important;
+    }
+    .reveal code.hljs {
+        background-color: #0a0a0a !important;
+        border: 1px solid white;
+    }
+</style>
+</section>
+<section id="während-ihr-darauf-wartet-dass-es-beginnt.." class="slide level1">
+<h1>Während Ihr darauf wartet, dass es beginnt..</h1>
+<ul>
+<li>könnt ihr nochmal die Folien aus der letzten Stunde anschauen
+<ul>
+<li>hier verlinkt: <a href="https://trivo25.github.io/tud-java-course/">https://trivo25.github.io/tud-java-course/</a></li>
+</ul></li>
+<li>VS Code oder <a href="https://www.jdoodle.com/online-java-compiler/ öffnen">https://www.jdoodle.com/online-java-compiler/ öffnen</a></li>
+<li>die Cheat Sheet öffnen: <a href="http://tiny.cc/java-cs">http://tiny.cc/java-cs</a></li>
+</ul>
+</section>
+<section id="java" class="slide level1">
+<h1>Java</h1>
+<h2 id="objektorientierte-programmierung">Objektorientierte Programmierung</h2>
+<p>Florian Kluge, Moritz Schulz</p>
+<ol start="13" type="1">
+<li>January 2022</li>
+</ol>
+<p><a href="https://trivo25.github.io/tud-java-course/">https://trivo25.github.io/tud-java-course/</a></p>
+<p><br></p>
+<p>Florian.Kluge@mailbox.tu-dresden.de</p>
+<p>Moritz.Schulz2@mailbox.tu-dresden.de</p>
+</section>
+<section class="slide level1">
+
+<h2 id="was-wir-heute-machen">Was wir heute machen</h2>
+<p><strong>Fehler und erweiterte Datentypen</strong></p>
+<ul>
+<li>Wiederholung Interfaces</li>
+<li>Zeit für die letzte Aufgabe &amp; Besprechung</li>
+<li>Exceptions &amp; Error Handling</li>
+<li>aus Standard Library: ArrayList, HashMap</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="contact">Contact</h3>
+<p>Florian Kluge</p>
+<p>Florian.Kluge@mailbox.tu-dresden.de</p>
+<p>Moritz Schulz</p>
+<p>Moritz.Schulz2@mailbox.tu-dresden.de</p>
+</section>
+<section class="slide level1">
+
+<h2 id="kurze-info-zum-kurs-online">Kurze Info zum Kurs: online</h2>
+<ul>
+<li>bitte abmelden / entschuldigen, wenn ihr nicht kommt
+<ul>
+<li>zwei Mal in Folge unentschuldigt fehlen =&gt; ausgetragen</li>
+</ul></li>
+<li>bitte, fragt gern, jederzeit
+<ul>
+<li>entweder Frage im Chat stellen</li>
+<li>oder sich mit Handzeichen melden =&gt; nach dem Drannehmen per Mikro die Frage stellen</li>
+</ul></li>
+<li>praktische Aufgaben- und Beispiel-basierte Lernweise
+<ul>
+<li>wenn ihr nicht weiterkommt / sich etwas komisch verhält:
+<ul>
+<li>“?” in den Chat schreiben</li>
+<li>wir gehen mit dir in einen Breakout-Raum</li>
+<li>du kannst dann den Bildschirm teilen</li>
+</ul></li>
+</ul></li>
+<li>uns geht es darum, alle mitzunehmen</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="stay-up-to-date">Stay up to date</h2>
+<ul>
+<li>die E-Mails der TUD regelmäßig überprüfen
+<ul>
+<li>z.B. Bekanntgabe der Veröffentlichung der Folien
+<ul>
+<li>auf der Seite des Programmierkurses</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="los-gehts" class="slide level1">
+<h1>Los geht’s!</h1>
+</section>
+<section class="slide level1">
+
+<h3 id="wiederholung-interfaces-zweck">Wiederholung Interfaces: Zweck</h3>
+<ul>
+<li>Klassen können mehrere Interfaces implementieren</li>
+<li>Interfaces geben vor
+<ul>
+<li>welche Methoden Objekte dieser Klasse haben sollen</li>
+<li>legen dabei aber kein Standardverhalten fest</li>
+</ul></li>
+<li>Klassen setzen Methoden des Interfaces um: <code>@Override</code></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="wiederholung-interfaces-beispiel">Wiederholung Interfaces: Beispiel</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Animal <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">makeSound</span><span class="op">();</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Pig <span class="kw">implements</span> Animal <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">makeSound</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;oiinkk&quot;</span><span class="op">);</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">// zum Beispiel in main(String[] args):</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    Animal pig1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Pig</span><span class="op">();</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    pig1<span class="op">.</span><span class="fu">makeSound</span><span class="op">();</span> <span class="co">// &#39;oiinkk&#39;</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h2 id="min-für-die-vorige-1.-aufgabe">15min für die vorige 1. Aufgabe</h2>
+<p>… danach Besprechung &amp; Beispielcode zeigen</p>
+<p>Wer schon fertig ist: Aufgabe 2 durchdenken (in 3 Folien)</p>
+</section>
+<section class="slide level1">
+
+<h3 id="aufgabe-1-zu-interfaces-teil-1">Aufgabe 1 zu Interfaces (Teil 1)</h3>
+<p>Arbeite hier gern mit mehreren Dateien.</p>
+<ol type="1">
+<li>Deklariere ein Interface <code>Form</code>, das eine Methode <code>float getFlaeche()</code> fordert.</li>
+<li>Implementiere das Interface für 2 Klassen: <code>Rechteck</code> und <code>Dreieck</code> (Konstruktoren, <code>implements</code>, <code>float getFlaeche()</code>)</li>
+<li>Teste, ob der Code wie gewünscht funktioniert, indem du jeweils zwei Rechtecke und zwei Dreiecke erstellst und deren Fläche in der Konsole ausgeben lässt: <code>System.out.println(flaeche1);</code> …</li>
+<li>Überschreibe (<code>@Override</code>) die <code>String toString()</code>-Methode in den Klassen, und verwende sie, um auch das Objekt in der Konsole auszugeben</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<h3 id="aufgabe-1-zu-interfaces-teil-2">Aufgabe 1 zu Interfaces (Teil 2)</h3>
+<ol start="5" type="1">
+<li>Lasse die beiden Klassen <code>Rechteck</code> und <code>Dreieck</code> das <code>Comparable&lt;Form&gt;</code>-Interface implementieren. Vergleiche in der Methode <code>int compareTo(Form f)</code> die Flächen entsprechend.</li>
+<li>Lege einen Array <code>Form[] formen</code> von den vier Objekten an (<code>= {r1,r2,d1,d2}</code>).</li>
+<li>Wir brauchen die <code>Arrays</code>-Klasse für den nächsten Schritt: <code>import java.util.Arrays;</code></li>
+<li>Gib <code>formen</code> aus, indem du <code>Arrays.toString(formen)</code> verwendest.</li>
+<li>Nutze <code>Arrays.sort(formen)</code>, um das Array zu sortieren.</li>
+<li>Gib <code>formen</code> auch nach dem Sortiervorgang aus.</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<h3 id="optionale-aufgabe-2-zu-interfaces-arrays">Optionale Aufgabe 2 zu Interfaces &amp; Arrays</h3>
+<p>Setze eine <code>Queue</code> (Warteschlange) von <code>int</code>-Werten als Interface um.</p>
+<p>Eine Queue ist ein abstrakter Datentyp nach FIFO-Prinzip: First in, first out. D.h. das Element, das zuerst hinzugefügt wird, wird auch zuerst herausgenommen.</p>
+<p>Das Interface hat die Methoden</p>
+<ul>
+<li><code>void push(int i)</code>: füge einen int hinten an</li>
+<li><code>int pop()</code>: entferne den letzten int und gib ihn zurück</li>
+</ul>
+<p>Setze dies mit einem Array um. Sollte der Array irgendwann zu klein sein, um noch eine weitere Zahl zu halten, musst du einen neuen Array erstellen und zunächst alle Elemente kopieren.</p>
+<p>Teste deine Implementierung mit kleinen und großen Queues.</p>
+</section>
+<section id="errors-exceptions" class="slide level1">
+<h1>Errors (Exceptions)</h1>
+<ul>
+<li>Es kann bei Programmausführung zu Fehlern kommen - Dinge gehen schief.</li>
+<li>Es gibt verschiedene Typen von Laufzeitfehlern
+<ul>
+<li>logische Fehler (coding errors)</li>
+<li>Fehler Aufgrund von falschen Input</li>
+<li>unvorhersehbare Fehler</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="error-handling">Error Handling</h3>
+<ul>
+<li>wenn ein Fehler auftritt, “wirft” Java einen Fehler und unterbricht den Programmfluss</li>
+<li>Fehler kann man auffangen und somit behandeln</li>
+<li>Fehler werden in die aufrufende Funktion weitergegeben
+<ul>
+<li>bis sie behandelt werden</li>
+<li>sonst wird das Programm beendet</li>
+</ul></li>
+<li>z.B. in der “Parent”-Funktion auffangen, und in der “Child”-Funktion werfen</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="dt">static</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">funktionDieFehlerWirft</span><span class="op">();</span> <span class="co">// Fehler hier auffangen!</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">funktionDieFehlerWirft</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fehler hier Fangen!</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="error-handling-1">Error Handling</h3>
+<ul>
+<li>in einem <code>try</code>-Block können wir vorsichtig Code prüfen, ob er Fehler wirft</li>
+<li>sobald ein Fehler geworfen wird, wird der <code>try</code>-Block abgebrochen</li>
+<li>mit <code>catch</code>-Block fangen wir mögliche Fehler auf und können damit arbeiten</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="error-handling-2">Error Handling</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Code welcher Fehler werfen kann</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fehler auffangen</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="error-handling-3">Error Handling</h3>
+<ul>
+<li>Arrays haben eine bestimmte Länge
+<ul>
+<li>wenn man auf ein Element zureifen will, welcher nicht existiert, entsteht ein Fehler</li>
+<li><code>java.lang.ArrayIndexOutOfBoundsException</code></li>
+</ul></li>
+<li>als Resultat stürzt das Programm ab..</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[</span> <span class="op">]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>numbers<span class="op">[</span><span class="dv">5</span><span class="op">]);</span> <span class="co">// Java wirft einen Fehler!</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Ende des Programms&quot;</span><span class="op">);</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="error-handling-4">Error Handling</h3>
+<ul>
+<li>wie fängt man so einen Fehler nun auf, ohne dass das Programm abstürzt?</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[</span> <span class="op">]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>numbers<span class="op">[</span><span class="dv">5</span><span class="op">]);</span> <span class="co">// Java wirft einen Fehler! </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Irgendwas ist schief gelaufen..&quot;</span><span class="op">);</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Ende des Programms&quot;</span><span class="op">);</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="error-handling-5">Error Handling</h3>
+<ul>
+<li>neben <code>try</code> und <code>catch</code> gibt es noch einen <code>finally</code>-Block</li>
+<li>Code im <code>finally</code>-Block wird <strong>immer</strong> nach Ende des <code>try-catch</code>-Blocks ausgeführt</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Main <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[</span> <span class="op">]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>       <span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>numbers<span class="op">[</span><span class="dv">5</span><span class="op">]);</span> <span class="co">// Java wirft einen Fehler! </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Irgendwas ist schief gelaufen..&quot;</span><span class="op">);</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">finally</span> <span class="op">{</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;try-catch Block vorbei&quot;</span><span class="op">);</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Ende des Programms&quot;</span><span class="op">);</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="error-handling-6">Error Handling</h3>
+<ul>
+<li>wir können auf selbst Fehler werfen!</li>
+<li>das <code>throw</code>-Keyword wirft einen Fehler</li>
+<li>ein Fehler muss immer einen Typ haben</li>
+<li>Beispiel:
+<ul>
+<li><code>ArithmeticException</code></li>
+<li><code>FileNotFoundException</code></li>
+<li><code>ArrayIndexOutOfBoundsException</code></li>
+<li><code>SecurityException</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// es wird versucht, eine Datei zu lesen. Dabei kann sie aber nicht gefunden werden!</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">throw</span> <span class="kw">new</span> <span class="bu">FileNotFoundException</span><span class="op">(</span><span class="st">&quot;Die Datei konnte nicht gefunden werden.&quot;</span><span class="op">);</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="error-handling-7">Error Handling</h3>
+<ul>
+<li>Beispiel: Alterüberprüfung</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">isOldEnough</span><span class="op">(</span><span class="dv">14</span><span class="op">);</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>e<span class="op">);</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">boolean</span> <span class="fu">isOldEnough</span><span class="op">(</span><span class="dt">int</span> age<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>age <span class="op">&gt;=</span> <span class="dv">18</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span>    </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">ArithmeticException</span><span class="op">(</span><span class="st">&quot;Nicht alt genug!&quot;</span><span class="op">);</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="aufgabe-zu-error-handling">Aufgabe zu Error Handling</h3>
+<ul>
+<li>Schreibt eine Funktion <code>float div(int a, int b)</code>, welche den Quotienten (Kommazahl) der beiden Zahlen a und b ausrechnet</li>
+<li>Aber: Sollte die zweite Zahl 0 sein, dann wirft die Funktion einen Fehler: <code>ArithmeticException</code></li>
+<li><code>import java.lang.ArithmeticException;</code></li>
+<li>Ruft die Funktion in <code>public static void main(String[] args)</code> auf</li>
+<li>Fangt den Fehler ab und gebt eine sinnvolle Konsolenausgabe!</li>
+</ul>
+</section>
+<section id="standard-library-und-helfer" class="slide level1">
+<h1>Standard-Library und Helfer</h1>
+<p><a href="https://docs.oracle.com/javase/7/docs/api/"><a href="https://docs.oracle.com/javase/7/docs/api/](https://docs.oracle.com/javase/7/docs/api/)">https://docs.oracle.com/javase/7/docs/api/</a></a></p>
+</section>
+<section class="slide level1">
+
+<h3 id="java.util-package"><code>java.util</code> Package</h3>
+<p><a href="https://docs.oracle.com/javase/7/docs/api/"><a href="https://docs.oracle.com/javase/7/docs/api/](https://docs.oracle.com/javase/7/docs/api/)">https://docs.oracle.com/javase/7/docs/api/</a></a></p>
+</section>
+<section class="slide level1">
+
+<h3 id="java.util-package-1"><code>java.util</code> Package</h3>
+<ul>
+<li>das <code>java.util</code>-Package liefert uns eine Reihe an sehr hilfreichen Klassen</li>
+</ul>
+<h4 id="java.util.arrayliste"><code>java.util.ArrayList&lt;E&gt;</code></h4>
+<ul>
+<li><strong>Resizable-array implementation of the List interface.</strong></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html">https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html</a></li>
+<li>ist im Hintergrund ein Array, der wie eine Liste “angesteuert” werden kann</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="arrayliste-vs-array">ArrayList&lt;E&gt; vs Array</h3>
+<ul>
+<li>ganz am Anfang haben wir Arrays kennengelernt
+<ul>
+<li>Arrays sind Listen von Datentypen mit einer <strong>vordefinierten</strong> Länge</li>
+</ul></li>
+<li>ArrayList&lt;E&gt; machen das gleiche
+<ul>
+<li>sie haben aber <strong>keine vordefinierte</strong> Länge - sie sind also dynamisch!</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="arrayliste-vs-array-1">ArrayList&lt;E&gt; vs Array</h3>
+<ul>
+<li>wenn man die Anzahl der Elemente in einem Array ändern will, müsste man immer ein neues Array erstellen</li>
+<li>ArrayList&lt;E&gt; macht das automatisch - man muss sich also keine Gedanken drüber machen</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="was-bedeutet-e">Was bedeutet &lt;E&gt; ?</h3>
+<ul>
+<li>&lt;E&gt; indiziert, dass die Klasse generisch ist!
+<ul>
+<li>generisch = die Klasse kann, einfach gesagt, mit unterschiedlichen Datentypen(Klassen) initialisiert werden (ähnlich wie Comparable&lt;T&gt;)</li>
+</ul></li>
+<li>Beispiel:
+<ul>
+<li>ArrayList&lt;String&gt; - ArrayList bestehend aus String-Objekten</li>
+<li>ArrayList&lt;Integer&gt; - ArrayList aus Integer-Objekten (oder <code>int</code>)</li>
+<li>ArrayList&lt;MyClass&gt; - ArrayList aus MyClass-Objekten</li>
+<li>…</li>
+</ul></li>
+</ul>
+<p><strong>Wichtig: nicht verrückt werden - einfach so hinnehmen!</strong></p>
+<p>Generics werden in der Softwaretechnologie-Vorlesung besprochen</p>
+</section>
+<section class="slide level1">
+
+<h3 id="beispiel-arrayliste">Beispiel ArrayList&lt;E&gt;</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// wir müssen die vordefinierte Klasse zunächst importieren!</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">ArrayList</span><span class="op">;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">// ArrayList vom Datentyp String</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> namen <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;();</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="vergleich-array-und-arrayliste">Vergleich Array und ArrayList&lt;E&gt;</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// ArrayList vom Datentyp String</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> namen1 <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;();</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">// vordefinierte Länge von 5</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">// kann nicht dynamisch länger werden!</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span><span class="op">[]</span> namen2 <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">[</span><span class="dv">5</span><span class="op">];</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="vergleich-array-und-arrayliste-1">Vergleich Array und ArrayList&lt;E&gt;</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span><span class="op">[]</span> namen2 <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">[</span><span class="dv">5</span><span class="op">];</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Zugriff auf Position 2; Index 2!</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>namen2<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="st">&quot;Max Mustermann&quot;</span><span class="op">;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> namen1 <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;();</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Zugriff auf Position 2; Index 2! ABER: mit .set(i, s);</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>namen1<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="st">&quot;Max Mustermann&quot;</span><span class="op">);</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="methoden-von-arrayliste">Methoden von ArrayList&lt;E&gt;</h3>
+<p>weitere Methoden um mit ArrayList&lt;E&gt; zu arbeiten</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> namen <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;();</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">// .get(i) - gibt Wert an Position i zurück</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">// kann java.lang.IndexOutOfBoundsException werfen</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>namen<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span> <span class="co">// &quot;Max Mustermann&quot;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">// .set(i, s) - setzt Wert s an Position i </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">// kann java.lang.IndexOutOfBoundsException werfen</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>namen<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="st">&quot;Max Mustermann&quot;</span><span class="op">);</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">// .add(s) - fügt Element s an Liste an</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>namen<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="st">&quot;Mustermann Max&quot;</span><span class="op">);</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">// .remove(i) - entfernt Element an Position i;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">//              Elemente danach &quot;rutschen nach&quot;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>namen<span class="op">.</span><span class="fu">remove</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">// .clear() - entfernt alle Elemente</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>namen<span class="op">.</span><span class="fu">clear</span><span class="op">();</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">// .size() - gibt die Anzahl der Elemente zurück</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>namen<span class="op">.</span><span class="fu">size</span><span class="op">();</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="schleifen-arrayliste">Schleifen ArrayList&lt;E&gt;</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> namen <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;();</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> namen<span class="op">.</span><span class="fu">size</span><span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// indirekter Zugriff via index</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>namen<span class="op">.</span><span class="fu">get</span><span class="op">(</span>i<span class="op">));</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="schleifen-arrayliste-1">Schleifen ArrayList&lt;E&gt;</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> namen <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;();</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> name <span class="op">:</span> namen<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// direkter Zugriff</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>name<span class="op">);</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ul>
+<li>Achtung: <code>java.util.ConcurrentModificationException</code> bei gleichzeitiger Veränderung</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="aufgabe-1-zu-arrayliste">Aufgabe #1 zu ArrayList&lt;E&gt;</h3>
+<ul>
+<li>Erstellt eine ArrayList&lt;Integer&gt; mit dem Namen <code>vielfache</code>.</li>
+<li>Nutzt eine Schleife um alle Vielfache von 5 von 0 bis 100 der ArrayList&lt;E&gt; <code>vielfache</code> hinzuzufügen.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 3 (von 4) Arten von Schleifen in Java</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">42</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{}</span> <span class="co">// i ∈ {0, ..., 41}</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">:</span> arrayOfInts<span class="op">)</span> <span class="op">{}</span> <span class="co">// i ∈ arrayOfInts</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>bedingung<span class="op">)</span> <span class="op">{}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="aufgabe-2-zu-arrayliste">Aufgabe #2 zu ArrayList&lt;E&gt;</h3>
+<p>Implementiert den Algorithmus “Sieb des Eratosthenes” mit einer ArrayList&lt;Integer&gt; <code>primzahlen</code>!</p>
+<ul>
+<li>Füllt sie dazu zunächst mit den Zahlen 2 bis 100.</li>
+<li>Entfernt gemäß Algorithmus alle nicht-Primzahlen zwischen 2 bis 100</li>
+<li>In <code>primzahlen</code> verbleiben nur Primzahlen. Gebt diese dann aus.</li>
+<li>Algorithmus: [Sieb des Eratosthenes](<a href="https://de.wikipedia.org/wiki/Sieb_des_Eratosthenes): ">https://de.wikipedia.org/wiki/Sieb_des_Eratosthenes): </a>
+<ul>
+<li>Man notiert sich die Zahlen 2 bis n</li>
+<li>Wiederhole, solange wie die Liste noch nicht abgearbeitet ist
+<ul>
+<li>Sei <span class="math inline">i</span> die nächste Zahl in der Liste (zu Beginn 2)</li>
+<li><span class="math inline">i</span> in der Liste belassen (<span class="math inline">i</span> ist prim)</li>
+<li>alle Mehrfachen von <span class="math inline">i</span> (also <span class="math inline">2 i, 3 i, \dots</span>) aus der Liste entfernen</li>
+</ul></li>
+</ul></li>
+<li>Hinweise und Erweiterung auf der nächsten Seite</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="aufgabe-2-zu-arrayliste---hinweise-erweiterung">Aufgabe #2 zu ArrayList&lt;E&gt; - Hinweise &amp; Erweiterung</h3>
+<ul>
+<li>Aufpassen: <code>java.lang.IndexOutOfBoundsException</code> - die Liste wird kürzer</li>
+<li>Aufpassen: Wenn Elemente aus der Liste entfernt werden, ändert sich ihr Index
+<ul>
+<li>Tipp: vom größten Index begonnen abarbeiten</li>
+</ul></li>
+<li>Erweiterung: Als Funktion schreiben
+<ul>
+<li>die die ArrayList zurückgibt</li>
+<li>die Primzahlen bis zum Parameter <code>int n</code> berechnet</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="aufgabe-3-zu-arrayliste">Aufgabe #3 zu ArrayList&lt;E&gt;</h3>
+<ul>
+<li>erstellt eine ArrayList&lt;E&gt; vom Typ Integer mit dem Namen <code>teilerfremde</code></li>
+<li>fügt alle <strong>teilerfremden</strong> Zahlen zu 18 von 0 bis 100 der ArrayList <code>teilerfremde</code> hinzu</li>
+<li>am Ende werden alle Zahlen in der Liste <code>teilerfremde</code> summiert</li>
+<li>gegeben ist die Funktion <code>int ggt(a, b)</code></li>
+</ul>
+<p>Hinweis: a ist teilerfremd zu 18 wenn <code>ggt(a, 18) == 1</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">int</span> <span class="fu">ggt</span><span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> h <span class="op">=</span> <span class="op">(</span>a <span class="op">&gt;</span> b<span class="op">)</span> <span class="op">?</span> b <span class="op">:</span> a<span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> h<span class="op">;</span> i <span class="op">&gt;</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">--)</span> <span class="op">{</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">((</span>a <span class="op">%</span> i<span class="op">)</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> <span class="op">(</span>b <span class="op">%</span> i<span class="op">)</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> i<span class="op">;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="java.util-package-2"><code>java.util</code> Package</h3>
+<h4 id="hashmapk-v"><code>HashMap&lt;K, V&gt;</code></h4>
+<ul>
+<li><strong>Hash table based implementation of the Map interface. An object that maps keys to values.</strong></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html"><a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)">https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html</a></a></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="was-ist-eine-hashmap">Was ist eine (Hash)Map?</h3>
+<ul>
+<li>eine Map “mapped” Keys zu Werten</li>
+<li>also: der Schlüssel zeigt auf einen Wert</li>
+<li>ArrayList sind eigentlich Maps wo Integer (index) auf einen Wert zeigt</li>
+<li>Maps erlauben uns aber komplexere Datentypen zu “mappen”</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="was-ist-eine-hashmap-1">Was ist eine (Hash)Map?</h3>
+<ul>
+<li>Beispiel: HashMap&lt;String, Integer&gt;
+<ul>
+<li>Name -&gt; Alter</li>
+<li>Also: “Florian” -&gt; 22</li>
+</ul></li>
+<li>Oder: HashMap&lt;String, Person&gt;
+<ul>
+<li>Name -&gt; Person (eigene Klasse)</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="hashmapk-v-1">HashMap&lt;K, V&gt;</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">// wir müssen die HashMap wieder importieren</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">HashMap</span><span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">// wir mappen Land -&gt; Stadt</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">String</span><span class="op">&gt;</span> hauptstaedte <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">String</span><span class="op">&gt;();</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="hashmapk-v-2">HashMap&lt;K, V&gt;</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">// wir müssen die HashMap wieder importieren</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">HashMap</span><span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">// wir mappen Land -&gt; Stadt</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">String</span><span class="op">&gt;</span> hauptstaedte <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">String</span><span class="op">&gt;();</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">// wir fügen Schlüssen und Werte hinzu</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>hauptstaedte<span class="op">.</span><span class="fu">put</span><span class="op">(</span><span class="st">&quot;England&quot;</span><span class="op">,</span> <span class="st">&quot;London&quot;</span><span class="op">);</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>hauptstaedte<span class="op">.</span><span class="fu">put</span><span class="op">(</span><span class="st">&quot;Deutschland&quot;</span><span class="op">,</span> <span class="st">&quot;Berlin&quot;</span><span class="op">);</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="methoden-von-hashmapk-v">Methoden von HashMap&lt;K, V&gt;</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">// .put(k, v) fügt Schlüssel k und Wert v hinzu</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>hauptstaedte<span class="op">.</span><span class="fu">put</span><span class="op">(</span><span class="st">&quot;Deutschland&quot;</span><span class="op">,</span> <span class="st">&quot;Berlin&quot;</span><span class="op">);</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">// .get(k) holt den Wert welcher zum Schlüssel k gehört</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">// wenn Schlüssel nicht vorhanden: null</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>hauptstaedte<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="st">&quot;Deutschland&quot;</span><span class="op">);</span> <span class="co">// holt &quot;Berlin&quot;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">// .remove(k) löscht den Schlüssel k</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>hauptstaedte<span class="op">.</span><span class="fu">remove</span><span class="op">(</span><span class="st">&quot;Deutschland&quot;</span><span class="op">);</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">// löscht Schlüssel &quot;Deutschland&quot; und dessen Wert &quot;Berlin&quot; aus der Map</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">// .size() gibt die Länge der Map zurück</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>hauptstaedte<span class="op">.</span><span class="fu">size</span><span class="op">();</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">// .keySet() gibt eine List aller Schlüssel zurück</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>hauptstaedte<span class="op">.</span><span class="fu">keySet</span><span class="op">();</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co">// .values() gibt eine Liste aller Werte zurück</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>hauptstaedte<span class="op">.</span><span class="fu">values</span><span class="op">();</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="schleifen---hashmapk-v">Schleifen - HashMap&lt;K, V&gt;</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">// durch alle Schlüssel der Map durchgehen</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> i <span class="op">:</span> hauptstaedte<span class="op">.</span><span class="fu">keySet</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span> <span class="co">// gibt aus &quot;Deutschland&quot;, &quot;England&quot; ..</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">// durch alle Werte der Map durchgehen</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> i <span class="op">:</span> hauptstaedte<span class="op">.</span><span class="fu">values</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span> <span class="co">// gibt aus &quot;Berlin&quot;, &quot;London&quot; ..</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="aufgabe-hashmapk-v">Aufgabe HashMap&lt;K, V&gt;</h3>
+<ul>
+<li>schreibt eine einfache Klasse <code>BankKonto</code>
+<ul>
+<li>Methoden:
+<ul>
+<li><code>pay(amount: int)</code> - gibt <code>"paying" + amount</code> in der Konsole aus</li>
+<li><code>void deposit(amount: int)</code> - gibt <code>"depositing" + amount</code> in der Konsole aus</li>
+</ul></li>
+</ul></li>
+<li>erstellt ebenfalls eine HashMap vom Typ <code>HashMap&lt;String, BankKonto&gt;</code></li>
+<li>in der Ihr einer Kontonummer (eg DE12345678) ein Konto zuweist</li>
+<li>fügt 5 Kontonummern und deren zugehörigen Bankkonten der Map hinzu
+<ul>
+<li><code>map.put("DE123", kontoObjekt);</code></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="kurze-anmerkung">Kurze Anmerkung</h3>
+<ul>
+<li>wir haben heute mit Generics gearbeitet, aber diese nicht genauer betrachtet</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="links-contact-info-feedback">Links, Contact Info, Feedback</h2>
+<p>See course materials here: <a href="https://trivo25.github.io/tud-java-course/">https://trivo25.github.io/tud-java-course/</a></p>
+<p>Check out the Cheat Sheet: <a href="http://tiny.cc/java-cs">http://tiny.cc/java-cs</a></p>
+</section>
+<section class="slide level1">
+
+<h2 id="quellen">Quellen</h2>
+<p>Inspiration für Probleme:</p>
+<ul>
+<li><a href="https://www.home.hs-karlsruhe.de/~pach0003/informatik_1/aufgaben/en/interfaces.html">https://www.home.hs-karlsruhe.de/~pach0003/informatik_1/aufgaben/en/interfaces.html</a></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@4.2.0/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@4.2.0/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.2.0/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.2.0/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
