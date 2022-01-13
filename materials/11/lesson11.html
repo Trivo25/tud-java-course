@@ -132,6 +132,7 @@
 <ul>
 <li>hier verlinkt: <a href="https://trivo25.github.io/tud-java-course/">https://trivo25.github.io/tud-java-course/</a></li>
 </ul></li>
+<li>die Beispielaufgaben vom letzten Mal anschauen / weiterbearbeiten</li>
 <li>VS Code oder <a href="https://www.jdoodle.com/online-java-compiler/ öffnen">https://www.jdoodle.com/online-java-compiler/ öffnen</a></li>
 <li>die Cheat Sheet öffnen: <a href="http://tiny.cc/java-cs">http://tiny.cc/java-cs</a></li>
 </ul>
@@ -314,7 +315,7 @@
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">funktionDieFehlerWirft</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fehler hier Fangen!</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fehler hier werfen!</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </section>
 <section class="slide level1">
@@ -440,10 +441,12 @@
 
 <h3 id="aufgabe-zu-error-handling">Aufgabe zu Error Handling</h3>
 <ul>
-<li>Schreibt eine Funktion <code>float div(int a, int b)</code>, welche den Quotienten (Kommazahl) der beiden Zahlen a und b ausrechnet</li>
+<li>Schreibt eine Funktion <code>float div(int a, int b)</code>
+<ul>
+<li>welche den Quotienten (Kommazahl) der beiden Zahlen a und b ausrechnet</li>
 <li>Aber: Sollte die zweite Zahl 0 sein, dann wirft die Funktion einen Fehler: <code>ArithmeticException</code></li>
-<li><code>import java.lang.ArithmeticException;</code></li>
-<li>Ruft die Funktion in <code>public static void main(String[] args)</code> auf</li>
+</ul></li>
+<li>Ruft <code>div(...)</code> in <code>public static void main(String[] args)</code> auf</li>
 <li>Fangt den Fehler ab und gebt eine sinnvolle Konsolenausgabe!</li>
 </ul>
 </section>
@@ -551,7 +554,7 @@
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">// .set(i, s) - setzt Wert s an Position i </span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">// kann java.lang.IndexOutOfBoundsException werfen</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>namen<span class="op">.</span><span class="fu">set</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="st">&quot;Max Mustermann&quot;</span><span class="op">);</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">// .add(s) - fügt Element s an Liste an</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">// .add(s) - fügt Element s hinten an Liste an</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>namen<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="st">&quot;Mustermann Max&quot;</span><span class="op">);</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">// .remove(i) - entfernt Element an Position i;</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">//              Elemente danach &quot;rutschen nach&quot;</span></span>
@@ -581,7 +584,10 @@
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>name<span class="op">);</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <ul>
-<li>Achtung: <code>java.util.ConcurrentModificationException</code> bei gleichzeitiger Veränderung</li>
+<li>Achtung: <code>java.util.ConcurrentModificationException</code> bei Veränderung der ArrayList innerhalb von <code>for</code>
+<ul>
+<li>dabei also lieber die vorige for-Schleife</li>
+</ul></li>
 </ul>
 </section>
 <section class="slide level1">
