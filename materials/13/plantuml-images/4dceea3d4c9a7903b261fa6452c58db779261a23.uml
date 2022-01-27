@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+scale 2.0
+skinparam classAttributeIconSize 0
+hide circle
+
+class Quizprogramm {
+    <u>+main(String[]): void
+}
+
+class Quizmanager {
+    -quizfragen: ArrayList<Quizfrage>
+    <i>-anzahlRichtig: int
+    <i>-anzahlFalsch: int
+    +Quizanwendung()
+    +ladeFragen(): void
+    +leiteQuiz(): void
+    <i>+stelleFrageUndKontrolliere(): void
+}
+
+class Quizfrage {
+    -frage: String
+    -antwort: String
+    +Quizfrage(String, String)
+    +getFrage(): String
+    <i>+getAntwort(): String
+    +stimmtAntwort(String): boolean
+}
+@enduml
