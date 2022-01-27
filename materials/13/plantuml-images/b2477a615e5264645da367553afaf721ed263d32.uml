@@ -12,17 +12,10 @@ class Quizmanager {
     -quizfragen: ArrayList<Quizfrage>
     <i>-anzahlRichtig: int
     <i>-anzahlFalsch: int
-    +Quizanwendung()
+    +Quizmanager()
     +ladeFragen(): void
     +leiteQuiz(): void
     <i>+stelleFrageUndKontrolliere(): void
-}
-
-Quizmanager <|-- QuizmanagerZufall
-
-class QuizmanagerZufall {
-    <i>übernimmt Methoden & Attribute
-    +ladeFragen(): void
 }
 
 class Quizfrage {

@@ -246,7 +246,7 @@
 <ul>
 <li>in Java sind Strings Objekte</li>
 <li><code>str1.equals(str2)</code> zum Vergleich nutzen</li>
-<li>mit <code>=</code>: keine gute Idee - vergleicht String-Referenzen, nicht String-Inhalte</li>
+<li>mit <code>==</code>: keine gute Idee - vergleicht String-Referenzen, nicht String-Inhalte</li>
 </ul>
 <p>https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#equals(java.lang.Object)</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> StringsVergleichen <span class="op">{</span></span>
@@ -291,7 +291,7 @@
 <li>mehrere Fragen stellen</li>
 <li>Funktionen extrahieren
 <ul>
-<li><code>static void stelleFrage(String frage, String antwort)</code></li>
+<li><code>static void stelleFrage(String frage, String antwort, Scanner scanner)</code></li>
 </ul></li>
 <li>optional: speichern, wie oft richtig und falsch
 <ul>
@@ -312,6 +312,7 @@
 </ul></li>
 <li><code>ladeFragen()</code> füllt <code>quizfragen</code>
 <ul>
+<li>die Methode trägt in <code>quizfragen</code> mehrere <code>Quizfrage</code>-Objekte ein</li>
 <li>siehe Stunde 11 mit ArrayLists: <a href="https://trivo25.github.io/tud-java-course/materials/11/examples/ArrayListExample.java">Beispielcode</a></li>
 <li>nutzt dazu Konstruktor <code>Quizfrage(String, String)</code></li>
 </ul></li>
@@ -320,11 +321,22 @@
 <li>bekommt Frage mit <code>Quizfrage.getFrage()</code></li>
 <li>kontrolliert Antwort mit <code>Quizfrage.stimmtAntwort()</code></li>
 </ul></li>
+<li><code>main(String[] args)</code> erstellt ein <code>Quizmanager</code>-Objekt und ruft die beiden Funktionen auf</li>
 </ul>
 </section>
 <section class="slide level1">
 
-<p><img data-src="plantuml-images/4dceea3d4c9a7903b261fa6452c58db779261a23.png" /></p>
+<p><img data-src="plantuml-images/b2477a615e5264645da367553afaf721ed263d32.png" /></p>
+</section>
+<section id="optional" class="slide level1">
+<h1>optional</h1>
+<ul>
+<li>in der Stunde nicht geschafft
+<ul>
+<li>Zufall</li>
+<li>Fragetypen</li>
+</ul></li>
+</ul>
 </section>
 <section class="slide level1">
 
@@ -368,7 +380,7 @@
 </section>
 <section class="slide level1">
 
-<p><img data-src="plantuml-images/3966d90f208a2e2490d96dffa7ac95324b2d8d7c.png" /></p>
+<p><img data-src="plantuml-images/0f8036d741bd8a0ecc560060b29cd1120dfcba5a.png" /></p>
 </section>
 <section class="slide level1">
 
@@ -386,80 +398,6 @@
 <li>… Kreative Ideen ✨</li>
 </ul></li>
 </ul>
-</section>
-<section class="slide level1">
-
-<h2 id="kurze-einführung-in-apis-und-http-requests">kurze Einführung in APIs und HTTP-Requests</h2>
-<h3 id="was-ist-eine-api">Was ist eine API?</h3>
-<ul>
-<li>eine API ermöglicht uns, mit anderen Modulen / Programmen (egal ob Server oder lokal) zu kommunizieren</li>
-<li>ihr habt bereits mit einer API gearbeitet</li>
-</ul>
-</section>
-<section class="slide level1">
-
-<h2 id="restful-apis">REST(ful) APIs</h2>
-<h3 id="was-ist-eine-rest-api">Was ist eine REST-API?</h3>
-<ul>
-<li>eine REST-API ist ein Weg, um mit einem (Web)Server zu kommunizieren</li>
-<li>wenn ihr eine Website öffnet wird ebenfalls ein <code>request</code> an den Server gestellt</li>
-<li>der Server antwortet dann mit einer <code>response</code></li>
-<li>das ganze passiert über HTTP(s)</li>
-</ul>
-</section>
-<section class="slide level1">
-
-<h2 id="restful-apis-1">REST(ful) APIs</h2>
-<p><img data-src="https://i.imgur.com/5rMaOaf.png" /></p>
-</section>
-<section class="slide level1">
-
-<h2 id="restful-apis-2">REST(ful) APIs</h2>
-<ul>
-<li>Funktion:
-<ul>
-<li>wir stellen <code>requests</code> an den Server</li>
-<li>der Server antwortet mit einer <code>response</code></li>
-</ul></li>
-<li>Wir können so dem Server sagen was er machen soll</li>
-</ul>
-</section>
-<section class="slide level1">
-
-<h2 id="restful-apis-3">REST(ful) APIs</h2>
-<ul>
-<li>ein API Aufruf beinhaltet immer eine
-<ul>
-<li>IP/Hostname/Domain</li>
-<li>und einen Endpoint (Pfad)
-<ul>
-<li>der Endpoint spezifiziert unsere Aktion</li>
-</ul></li>
-<li>zusammen mit Protokoll = URL</li>
-</ul></li>
-<li>eg. <code>google.com/search</code> - sagt Google, dass es suchen soll</li>
-</ul>
-</section>
-<section class="slide level1">
-
-<h2 id="restful-apis-4">REST(ful) APIs</h2>
-<ul>
-<li>in unserem Beispiel sieht das so aus
-<ul>
-<li>IP: 144.76.106.99:8081</li>
-<li>Endpoints:
-<ul>
-<li><code>/questions</code> - Der Server antwortet euch mit allen Fragen</li>
-<li><code>/createNew</code> - Ihr erstellt einen neuen Account</li>
-<li><code>/verify</code> - Ihr könnt eure Antworten verifizieren</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level1">
-
-<h2 id="restful-apis-5">REST(ful) APIs</h2>
-<p>aber mehr dazu später..</p>
 </section>
 <section class="slide level1">
 
